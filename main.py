@@ -6,6 +6,8 @@ speedgame=False
 memgame=False
 typegame=False
 smult=1
+elapsedtime=0
+sentence=[]
 wordamt=0
 clear = lambda: os.system('cls')
 f = open("words.txt", "rt")
@@ -32,6 +34,18 @@ def checkguess(word,guess):
             return(score)
         elif wrong*smult>score:
             return("l")
+def checkaccuracy(sentence,retype):
+    if retype==sentence:
+        return 100
+    else:
+        correct=0
+        for i in range(len(retype)):
+            try:
+                if sentence[i] == retype[i]:
+                    correct+=1
+            except:
+                pass
+    return ((correct/len(sentence))*100)
 score=0
 timetosleep=3
 words=[]
@@ -46,6 +60,14 @@ elif whichgame=="2":
     input(game2)
     memgame=True
     smult=4
+elif whichgame=="3":
+    input(game3)
+    typegame=True
+    wordamt=input("How many words do you want to retype (input an integer): ")
+    for i in range(int(wordamt)):
+        sentence.append(chooseword())
+    sentence=' '.join(i for i in sentence)
+    start=time.time()
 else:
     input("invalid response")
 clear()
@@ -60,6 +82,7 @@ while memgame:
     grade=checkguess(guess, word)
     if grade=="l":
         print(f"The correct answer was {word}, and you typed {guess}")
+        print(f"Your total score was {score}")
         break
     else:
         score+=grade
@@ -75,10 +98,20 @@ while speedgame:
     guess=input("What was the word: ")
     grade=checkguess(guess, word)
     if grade=="l":
+        print(f"The word was {word}")
+        print(f"Your total score was {score}")
         break
     else:
         score+=grade
     word = False
     timetosleep*=0.75
     clear()
-print(f"Your total score was {score}")
+while typegame:
+    print(sentence)
+    retype=input()
+    accuracy=checkaccuracy(sentence, retype)
+    elapsedtime=time.time()-start
+    WPM=(len(sentence)/5)/(elapsedtime/60)
+    print(WPM)
+    print(accuracy)
+    break
