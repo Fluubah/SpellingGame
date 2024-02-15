@@ -38,7 +38,7 @@ words=[]
 game1="In this game, you will see a word for a decreasing amount of time and you have to try to respell it the best you can.\nEach letter youhave in the correct spot will give you an extra point, and a word spelled fully corrected has a 2x multiplier\nThe game continues until you get less than 50 percent accuracy on a word\nPress enter to begin"
 game2="In this game, each round a new word will be added to what you have to type out\n Each correct letter adds one to your score, a perfect recreation gives a 2x multiplier, and the game ends when you have less than 75 percent accuracy"
 game3="In this game, you have to retype a sentence and press enter when you're finished. Then the game will calculate your WPM and accuracy."
-whichgame=input("Do you want to play game 1 (speed based) or game 2 (memory based) or game 3 (typing test) Type 1, 2 or 3: ")
+whichgame=input("Do you want to play game 1 (speed based) or game 2 (memory based) Type 1 or 2: ")
 if whichgame=="1":
     input(game1)
     speedgame=True
