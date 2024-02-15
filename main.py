@@ -80,6 +80,4 @@ while speedgame:
     word = False
     timetosleep*=0.75
     clear()
-while typegame:
-
 print(f"Your total score was {score}")
