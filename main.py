@@ -59,6 +59,7 @@ while memgame:
     guess=input("What was the word: ")
     grade=checkguess(guess, word)
     if grade=="l":
+        print(f"The correct answer was {word}, and you typed {guess}")
         break
     else:
         score+=grade
